@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelime Dünyası: Bulmaca</title>
+<meta name="description" content="Kelime Dünyası: Bulmaca — Türkçe kelime bulmaca oyunu. 81 il, yüzlerce bölüm, günlük bulmacalar, lider sıralaması, başarı rozetleri. iPhone'a ücretsiz indir!">
+<meta name="keywords" content="kelime oyunu, bulmaca, türkçe kelime bulmaca, kelime dünyası, sözcük oyunu, kelime bulmaca oyunu, türkçe bulmaca, ios kelime oyunu, ücretsiz kelime oyunu, günlük bulmaca, kelime avı, kelime turu, zeka oyunu, kelime yarışması, kelime bulmacası indir, türkçe sözcük bulmaca, harf oyunu, kelime tahmin, bulmaca oyunu indir">
+<meta name="author" content="Kelime Dünyası">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0d0818">
+<link rel="canonical" href="https://abdullahkahriman.github.io/word-puzzle-site/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abdullahkahriman.github.io/word-puzzle-site/">
+<meta property="og:title" content="Kelime Dünyası: Bulmaca — Türkçe Kelime Oyunu">
+<meta property="og:description" content="Türkiye'nin 81 ilini keşfet, kelime hazineni geliştir. Günlük bulmacalar, seri bonusları, rozetler ve lider sıralaması. Ücretsiz indir!">
+<meta property="og:site_name" content="Kelime Dünyası">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://abdullahkahriman.github.io/word-puzzle-site/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kelime Dünyası: Bulmaca — Türkçe Kelime Oyunu">
+<meta name="twitter:description" content="Türkiye'nin 81 ilini keşfet, kelime hazineni geliştir. Günlük bulmacalar, seri bonusları, rozetler ve lider sıralaması. Ücretsiz indir!">
+<meta name="twitter:image" content="https://abdullahkahriman.github.io/word-puzzle-site/assets/og-image.jpg">
+
+<!-- App Store Smart Banner -->
+<meta name="apple-itunes-app" content="app-id=6808553084">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Kelime Dünyası: Bulmaca",
+  "operatingSystem": "iOS",
+  "applicationCategory": "GameApplication",
+  "applicationSubCategory": "Word",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TRY"
+  },
+  "description": "Türkçe kelime bulmaca oyunu. 81 il, yüzlerce bölüm, günlük bulmacalar, lider sıralaması ve başarı rozetleri ile kelime hazineni geliştir.",
+  "inLanguage": "tr",
+  "url": "https://apps.apple.com/us/app/kelime-d%C3%BCnyas%C4%B1-bulmaca/id6808553084",
+  "image": "https://abdullahkahriman.github.io/word-puzzle-site/assets/og-image.jpg",
+  "screenshot": [
+    "https://abdullahkahriman.github.io/word-puzzle-site/screenshots/01_oynanis.webp",
+    "https://abdullahkahriman.github.io/word-puzzle-site/screenshots/02_ana_sayfa.webp",
+    "https://abdullahkahriman.github.io/word-puzzle-site/screenshots/03_harita.webp",
+    "https://abdullahkahriman.github.io/word-puzzle-site/screenshots/04_gunluk.webp",
+    "https://abdullahkahriman.github.io/word-puzzle-site/screenshots/05_kategori_tamamlandi.webp"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": "1"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap">
+
+<style>
+/* ── Tokens ── */
+:root {
+  --bg: #0d0818;
+  --surface: #170f2b;
+  --surface-raised: #1e1538;
+  --ink: #f4efff;
+  --ink-muted: #b7a9df;
+  --ink-sub: #e7defa;
+  --gold: #ffc94a;
+  --gold-dark: #b8842a;
+  --gold-ink: #3a2400;
+  --accent-blue: #4fd3e0;
+  --accent-pink: #ff6fa6;
+  --accent-orange: #ff9a3d;
+  --accent-green: #a7e349;
+  --accent-purple: #b98cf2;
+  --accent-yellow: #ffd34d;
+  --line: #2c2148;
+  --glow: rgba(255, 201, 74, 0.12);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --max-w: 960px;
+  --gutter: 20px;
+}
+
+/* Single-theme: deliberately dark — the game's identity is this palette */
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Nunito", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  line-height: 1.6;
+  padding-inline: var(--gutter);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Reset extras ── */
+*, *::before, *::after { box-sizing: border-box; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ── Layout ── */
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+}
+
+section {
+  padding-block: 64px;
+}
+
+/* ── Nav ── */
+.nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 100;
+  padding-block: 14px;
+  background: rgba(13, 8, 24, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+
+
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--gold-ink);
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  white-space: nowrap;
+  transition: transform 0.12s ease;
+}
+
+.nav-cta:hover { transform: translateY(-1px); }
+.nav-cta:active { transform: translateY(1px); }
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+}
+
+/* ── Hero ── */
+.hero {
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 72px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(101, 63, 214, 0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-tiles {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tile {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 36px;
+  color: #241353;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.25);
+  transform: translateY(0);
+  animation: tileBounce 2.4s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tile:nth-child(1) { animation-delay: 0s; }
+.hero-tile:nth-child(2) { animation-delay: 0.15s; }
+.hero-tile:nth-child(3) { animation-delay: 0.3s; }
+.hero-tile:nth-child(4) { animation-delay: 0.45s; }
+.hero-tile:nth-child(5) { animation-delay: 0.6s; }
+.hero-tile:nth-child(6) { animation-delay: 0.75s; }
+
+@keyframes tileBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero h1 {
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 5vw, 42px);
+  margin: 0 0 8px;
+  position: relative;
+  z-index: 1;
+  text-wrap: balance;
+}
+
+.hero .tagline {
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: var(--ink-sub);
+  margin: 0 0 36px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--gold-ink);
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  padding: 16px 36px;
+  border-radius: 60px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 0 var(--gold-dark), 0 12px 32px rgba(255, 201, 74, 0.2);
+  transition: transform 0.1s ease;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.cta-btn { animation: ctaFloat 3s ease-in-out infinite; }
+.cta-btn:hover { animation-play-state: paused; transform: translateY(-2px); }
+.cta-btn:active { animation-play-state: paused; transform: translateY(4px); box-shadow: 0 2px 0 var(--gold-dark); }
+
+@keyframes ctaFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.cta-btn svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.hero-badge {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--ink-muted);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Stars background ── */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.15; }
+  100% { opacity: 0.6; }
+}
+
+/* ── Features ── */
+.features {
+  position: relative;
+  z-index: 1;
+}
+
+.features-heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.features-heading h2 {
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 4vw, 34px);
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+
+.features-heading p {
+  color: var(--ink-muted);
+  font-size: 16px;
+  margin: 0;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 700px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 28px;
+}
+
+.feature-card h3 {
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  margin: 0 0 10px;
+}
+
+.feature-card p {
+  color: var(--ink-muted);
+  font-size: 14.5px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── How to play ── */
+.howto {
+  position: relative;
+  z-index: 1;
+}
+
+.howto-heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.howto-heading h2 {
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 4vw, 34px);
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+
+.howto-heading p {
+  color: var(--ink-muted);
+  font-size: 16px;
+  margin: 0;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  counter-reset: step;
+}
+
+@media (max-width: 860px) {
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .steps {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  .steps {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+.step {
+  text-align: center;
+  counter-increment: step;
+}
+
+.step-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface-raised);
+  border: 2px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--gold);
+}
+
+.step h4 {
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0 0 6px;
+}
+
+.step p {
+  color: var(--ink-muted);
+  font-size: 13.5px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Screenshots ── */
+.screenshots {
+  position: relative;
+  z-index: 1;
+}
+
+.screenshots-heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.screenshots-heading h2 {
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 4vw, 34px);
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+
+.screenshots-heading p {
+  color: var(--ink-muted);
+  font-size: 16px;
+  margin: 0;
+}
+
+.phone-row {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.phone-frame {
+  width: 220px;
+  height: 440px;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.phone-frame img {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+
+
+
+@media (max-width: 560px) {
+  .phone-row { gap: 16px; }
+  .phone-frame { width: 160px; height: 320px; border-radius: 24px; }
+
+}
+
+/* ── Bottom CTA ── */
+.bottom-cta {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 40px;
+}
+
+.bottom-cta-glow {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(255, 201, 74, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.bottom-cta h2 {
+  font-family: "Baloo 2", "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 4vw, 34px);
+  margin: 0 0 12px;
+  text-wrap: balance;
+}
+
+.bottom-cta p {
+  color: var(--ink-muted);
+  font-size: 16px;
+  margin: 0 0 32px;
+}
+
+/* ── Divider ── */
+.divider {
+  border: none;
+  height: 1px;
+  background: var(--line);
+  margin: 0;
+}
+
+/* ── Footer ── */
+.footer {
+  padding-block: 32px;
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 13px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 12px;
+}
+
+.footer-links a:hover {
+  color: var(--ink);
+}
+
+.footer-copy {
+  opacity: 0.6;
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-tile, .cta-btn { animation: none; }
+  .star { animation: none; opacity: 0.3; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Stars background -->
+<div class="stars" aria-hidden="true" id="stars"></div>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <div class="nav-logo">
+      <img src="assets/logo.webp" alt="Kelime Dünyası logosu" width="36" height="36" style="border-radius:8px;">
+      Kelime Dünyası: Bulmaca
+    </div>
+    <div class="nav-links">
+      <a href="#ozellikler">Özellikler</a>
+      <a href="#nasil">Nasıl Oynanır</a>
+      <a href="#ekranlar">Ekranlar</a>
+    </div>
+    <a href="https://apps.apple.com/us/app/kelime-d%C3%BCnyas%C4%B1-bulmaca/id6808553084" target="_blank" rel="noopener" class="nav-cta">
+      <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M14.5 1.5c.5.6.8 1.3.8 2.1 0 .9-.3 1.6-.9 2.2-.6.6-1.3.9-2.2.9-.1 0-.2 0-.3 0 0-.9.3-1.7.9-2.3.6-.7 1.3-1 2-1.1-.1.1-.2.1-.3.2zm1.4 5.3c-.7-.4-1.3-.6-1.7-.6-.5 0-1 .2-1.7.5-.5.2-.9.4-1.1.4-.3 0-.7-.2-1.2-.5-.5-.2-.9-.4-1.3-.4-1.3 0-2.7 1.1-2.7 3.3 0 1.3.5 2.8 1.4 4.2.7 1.1 1.4 1.7 2 1.7.3 0 .7-.1 1.2-.4.5-.3.9-.4 1.2-.4.3 0 .7.1 1.2.4.5.3.9.4 1.1.4.7 0 1.3-.6 2-1.8.4-.7.7-1.3.9-1.8-1-.4-1.5-1.2-1.5-2.3 0-.9.3-1.7 1-2.3-.4-.2-.5-.3-.8-.4z"/></svg>
+      App Store
+    </a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero wrap">
+  <div class="hero-glow"></div>
+  <div class="hero-tiles">
+    <div class="hero-tile" style="background:#ffd34d">K</div>
+    <div class="hero-tile" style="background:#ff9a3d">E</div>
+    <div class="hero-tile" style="background:#ff6fa6">L</div>
+    <div class="hero-tile" style="background:#a7e349">İ</div>
+    <div class="hero-tile" style="background:#4fd3e0">M</div>
+    <div class="hero-tile" style="background:#b98cf2">E</div>
+  </div>
+  <h1>Kelime Dünyası: Bulmaca</h1>
+  <p class="tagline">Türkçe Kelime Bulmaca Oyunu — Ücretsiz Oyna</p>
+  <a href="https://apps.apple.com/us/app/kelime-d%C3%BCnyas%C4%B1-bulmaca/id6808553084" target="_blank" rel="noopener" class="cta-btn">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 16.94 2.94 12.42 4.7 9.3C5.57 7.75 7.13 6.76 8.82 6.74C10.1 6.72 11.32 7.62 12.11 7.62C12.91 7.62 14.37 6.53 15.92 6.71C16.57 6.74 18.39 6.97 19.56 8.66C19.47 8.72 17.39 9.93 17.41 12.46C17.44 15.47 20.06 16.44 20.09 16.45C20.06 16.53 19.67 17.9 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+    Ücretsiz İndir
+  </a>
+  <p class="hero-badge">iOS · Ücretsiz · Türkçe · App Store'da</p>
+</section>
+
+<!-- Features -->
+<section class="features wrap" id="ozellikler">
+  <div class="features-heading reveal">
+    <h2>Neden Kelime Dünyası: Bulmaca?</h2>
+    <p>Türkiye'nin 81 ilini keşfet, kelime hazineni geliştir.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon" style="background:rgba(43,98,232,0.15)">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M16 3L28 9V15C28 22.18 22.84 28.67 16 30C9.16 28.67 4 22.18 4 15V9L16 3Z" fill="#4fd3e0" opacity="0.9"/>
+          <text x="16" y="20" text-anchor="middle" font-family="Baloo 2,sans-serif" font-size="12" font-weight="800" fill="#170f2b">81</text>
+        </svg>
+      </div>
+      <h3>81 İl, Yüzlerce Bulmaca Bölümü</h3>
+      <p>Her ilin kendine özel kelime bulmacaları var. İstanbul'dan Hakkari'ye tüm Türkiye'yi keşfet.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon" style="background:rgba(178,79,224,0.15)">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <polygon points="16,2 20,12 30,12 22,18 25,28 16,22 7,28 10,18 2,12 12,12" fill="#b98cf2" opacity="0.9"/>
+        </svg>
+      </div>
+      <h3>Seri Yap, Yıldız Kazan</h3>
+      <p>Kelime bulmacalarını art arda çöz, combo bonusu ve yıldız kazan. Ne kadar uzun seri, o kadar çok ödül!</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon" style="background:rgba(224,113,63,0.15)">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M16 4C16 4 22 10 22 18C22 22 19.3 26 16 28C12.7 26 10 22 10 18C10 10 16 4 16 4Z" fill="#ff9a3d" opacity="0.9"/>
+          <path d="M16 12C16 12 19 15 19 19C19 21 17.6 23 16 24C14.4 23 13 21 13 19C13 15 16 12 16 12Z" fill="#ffd34d" opacity="0.9"/>
+        </svg>
+      </div>
+      <h3>Her Gün Yeni Günlük Bulmaca</h3>
+      <p>Günlük kelime bulmacası ile her gün yeni bir meydan okuma. Serini koru, ödüllerini topla.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider wrap">
+
+<!-- How to play -->
+<section class="howto wrap" id="nasil">
+  <div class="howto-heading reveal">
+    <h2>Kelime Bulmaca Nasıl Oynanır?</h2>
+    <p>Beş adımda kelime ustası ol.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <h4>İl Seç</h4>
+      <p>Listeden bir il seç, o ilin bölümlerini keşfet.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">2</div>
+      <h4>Kelimeleri Bul</h4>
+      <p>Karışık harfleri birleştir, gizli Türkçe kelimeleri bul.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">3</div>
+      <h4>Seri Oluştur</h4>
+      <p>Art arda doğru bul, bonus puanları topla.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">4</div>
+      <h4>Rozet Kazan</h4>
+      <p>Başarı rozetleri topla — düzenli oyna, seviyeleri tamamla, koleksiyonunu büyüt.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">5</div>
+      <h4>Zirveye Çık</h4>
+      <p>Lider sıralamasında üst sıralara tırman, en iyilerle yarış.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider wrap">
+
+<!-- Screenshots -->
+<section class="screenshots wrap" id="ekranlar">
+  <div class="screenshots-heading reveal">
+    <h2>Oyundan Kareler</h2>
+    <p>Oyun içi ekran görüntüleriyle Kelime Dünyası'nı keşfet.</p>
+  </div>
+  <div class="phone-row reveal">
+    <div class="phone-frame">
+      <img src="screenshots/01_oynanis.webp" alt="Kelime bulmaca oyun ekranı" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="phone-frame">
+      <img src="screenshots/02_ana_sayfa.webp" alt="İl listesi menü ekranı" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="phone-frame">
+      <img src="screenshots/03_harita.webp" alt="Bölüm ilerleme haritası" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="phone-frame">
+      <img src="screenshots/04_gunluk.webp" alt="Günlük bulmaca ekranı" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="phone-frame">
+      <img src="screenshots/05_kategori_tamamlandi.webp" alt="İl tamamlama kutlama ekranı" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </div>
+</section>
+
+<hr class="divider wrap">
+
+<!-- Bottom CTA -->
+<section class="bottom-cta wrap">
+  <div class="bottom-cta-glow"></div>
+  <h2>Kelime Dünyasına Katıl</h2>
+  <p>Türkiye'nin en eğlenceli Türkçe kelime bulmaca oyununu hemen indir, ücretsiz oynamaya başla.</p>
+  <a href="https://apps.apple.com/us/app/kelime-d%C3%BCnyas%C4%B1-bulmaca/id6808553084" target="_blank" rel="noopener" class="cta-btn">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 16.94 2.94 12.42 4.7 9.3C5.57 7.75 7.13 6.76 8.82 6.74C10.1 6.72 11.32 7.62 12.11 7.62C12.91 7.62 14.37 6.53 15.92 6.71C16.57 6.74 18.39 6.97 19.56 8.66C19.47 8.72 17.39 9.93 17.41 12.46C17.44 15.47 20.06 16.44 20.09 16.45C20.06 16.53 19.67 17.9 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+    Ücretsiz İndir
+  </a>
+</section>
+
+<!-- Footer -->
+<footer class="footer wrap">
+  <div class="footer-links">
+    <a href="https://sites.google.com/view/pp-kdunyabulmaca/ana-sayfa" target="_blank" rel="noopener">Gizlilik Politikası</a>
+    <a href="https://sites.google.com/view/tou-kelimednyasbulmaca/ana-sayfa" target="_blank" rel="noopener">Kullanım Koşulları</a>
+  </div>
+  <p class="footer-copy">© <span id="year"></span> Kelime Dünyası: Bulmaca. Tüm hakları saklıdır.</p>
+</footer>
+
+<script>
+(function(){
+  // Stars
+  const starsEl = document.getElementById('stars');
+  for(let i = 0; i < 40; i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random()*100 + '%';
+    s.style.top = Math.random()*100 + '%';
+    s.style.width = s.style.height = (1.5 + Math.random()*2.5) + 'px';
+    s.style.animationDelay = (Math.random()*3) + 's';
+    s.style.animationDuration = (2 + Math.random()*3) + 's';
+    starsEl.appendChild(s);
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(function(el){ obs.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  // Dynamic year
+  var yearEl = document.getElementById('year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({ behavior:'smooth', block:'start' });
+      }
+    });
+  });
+
+  // Deter casual devtools shortcuts (not a real security boundary — view-source
+  // and the browser menu can still open devtools; this only blocks the common keys)
+  document.addEventListener('contextmenu', function(e){
+    if(e.target.closest('#ekranlar')) e.preventDefault();
+  });
+  document.addEventListener('keydown', function(e){
+    var k = e.key;
+    var blockCombo = (e.ctrlKey || e.metaKey) && e.shiftKey && (k === 'I' || k === 'i' || k === 'J' || k === 'j' || k === 'C' || k === 'c');
+    var blockViewSource = (e.ctrlKey || e.metaKey) && (k === 'U' || k === 'u');
+    if(k === 'F12' || blockCombo || blockViewSource){
+      e.preventDefault();
+    }
+  });
+})();
+</script>
+</body>
+</html>
