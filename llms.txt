@@ -1,0 +1,15 @@
+# Kelime Dünyası: Bulmaca
+
+> Türkçe kelime bulmaca oyunu için iOS uygulamasının tanıtım sitesi. Oyun, Türkiye'nin 81 ilini temsil eden yüzlerce bölümden oluşan bir kelime bulma bulmacası sunar.
+
+Kelime Dünyası: Bulmaca, kullanıcıların harfleri birleştirerek kelimeler bulduğu, il il ilerleyen bir bulmaca oyunudur. Günlük bulmacalar, başarı rozetleri ve lider sıralaması gibi özellikler içerir. Ücretsiz olarak App Store üzerinden indirilebilir, iOS cihazlarda çalışır.
+
+## Sayfalar
+- [Ana Sayfa](https://abdullahkahriman.github.io/word-puzzle-site/): Oyun tanıtımı, özellikler, ekran görüntüleri ve indirme bağlantısı.
+
+## Uygulama
+- [App Store](https://apps.apple.com/us/app/kelime-d%C3%BCnyas%C4%B1-bulmaca/id6808553084): Uygulamanın App Store sayfası, iOS için ücretsiz indirme.
+
+## Yasal
+- [Gizlilik Politikası](https://sites.google.com/view/pp-kdunyabulmaca/ana-sayfa)
+- [Kullanım Koşulları](https://sites.google.com/view/tou-kelimednyasbulmaca/ana-sayfa)
